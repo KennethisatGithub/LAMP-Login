@@ -1,5 +1,5 @@
 # Docker Compose Version
-version: '3.8'
+version: "3.8"
 
 # Pay attention to Service execution order since it matters
 # Loading up each service will be dependant on one or another sometimes
@@ -27,12 +27,12 @@ services:
       MYSQL_USER: kxtran
       MYSQL_PASSWORD: test
 
-# Apache & PHP built through Dockerfile in ./web folder
+  # Apache & PHP built through Dockerfile in ./web folder
   web:
     build: ./web
     container_name: web
     depends_on:
-    - db
+      - db
     volumes:
       - ./web:/var/www/html/
     ports:
@@ -41,8 +41,8 @@ services:
       - frontend
       - backend
 
-# Database Management
-# Adminer Database Management Software
+  # Database Management
+  # Adminer Database Management Software
   dbms:
     image: adminer
     container_name: dmbs
@@ -58,4 +58,3 @@ services:
 networks:
   frontend:
   backend:
-
